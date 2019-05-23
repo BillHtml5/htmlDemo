@@ -1,0 +1,137 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas花卉</title>
+
+<style>
+body,
+html {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #000;
+	user-select: none;
+}
+canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	user-select: none;
+	touch-action: none;
+	content-zooming: none;
+	background: #000;
+	cursor: crosshair;
+}</style>
+</head>
+<body>
+
+
+<canvas></canvas>
+
+<script>
+"use strict";
+class Head {
+	constructor () {
+		this.x = 0.0;
+		this.y = 0.0;
+    this.radius = 0.0;
+    this.direction = 0.0;
+    this.dDir = 0.0;
+    this.rightOrLeft = false;
+    this.shooted = false;
+    this.color = 0;
+	}
+	shoot (x, y, direction) {
+		this.shooted = true;
+		this.x = x;
+		this.y = y;
+		this.direction = direction;
+		this.dDir = Math.random();
+		this.radius = Math.random() * 20 + 5;
+		this.rightOrLeft = Math.random() < .5;
+		this.color = `hsl(${Math.floor(Math.random() * 90) - (Math.random() > 0.33 ? 30 : 160)}, 80%, 60%)`;
+	}
+	anim() {
+		if (!this.shooted) {
+			pointer.next = this;
+			return;
+		}
+		this.x += this.radius * Math.cos( this.direction );
+		this.y += this.radius * Math.sin( this.direction );
+		ctx.beginPath();
+		ctx.arc(this.x, this.y, this.radius * 0.5, 0, 2 * Math.PI);
+		ctx.fillStyle = this.color;
+		ctx.fill();
+		ctx.stroke();
+		if( this.rightOrLeft ) this.direction -= this.dDir;
+		else this.direction += this.dDir;;
+		this.radius -= .4;
+		if( this.radius <= 0 ) this.shooted = false;
+	}
+}
+const canvas = {
+	init() {
+		this.elem = document.querySelector("canvas");
+		this.resize();
+		window.addEventListener("resize", () => this.resize(), false);
+		return this.elem.getContext("2d");
+	},
+	resize() {
+		this.width = this.elem.width = this.elem.offsetWidth;
+		this.height = this.elem.height = this.elem.offsetHeight;
+	}
+};
+const pointer = {
+	x: 0,
+	y: 0,
+	xb: 0,
+	yb: 0,
+	next: null,
+	frame: 0,
+	move(e, touch) {
+		const pointer = touch ? e.targetTouches[0] : e;
+		this.x = pointer.clientX;
+		this.y = pointer.clientY;
+		this.shoot(this.x, this.y);
+	},
+	shoot(x, y) {
+		if (!this.next) {
+			this.next = new Head();
+			heads.push(this.next);
+		}
+		this.frame++;
+		if (!(this.frame % 3)) {
+			ctx.fillStyle = "rgba(8, 8, 8, 0.05)";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+		}
+		this.next.shoot(x, y, Math.atan2(y - this.yb, x - this.xb));
+		this.next = null;
+		this.xb = x;
+		this.yb = y;
+	},
+	init(canvas) {
+		canvas.elem.addEventListener("mousemove", e => this.move(e, false), false);
+		canvas.elem.addEventListener("touchmove", e => this.move(e, true), false);
+	}
+};
+const ctx = canvas.init();
+pointer.init(canvas);
+const heads = [];
+const run = () => {
+	requestAnimationFrame(run);
+	for (const head of heads) head.anim();
+}
+for (let a = 0; a < 2 * Math.PI; a += 0.1) {
+	pointer.shoot(
+		canvas.width * 0.5 + Math.cos(a) * canvas.width * 0.25,
+		canvas.height * 0.5 + Math.sin(a) * canvas.height * 0.25
+	);
+}
+run();</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+/*通用初始化样式*/
+* { margin: 0; padding: 0; }
+body, div, p, h1, h2, h3, h4, h5, h6, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, table,th,td { margin:0; padding:0; }
+body, button, input, select, textarea  { }
+address, cite, em, i { font-style: normal; }
+small {  } li { list-style: none; } a { text-decoration: none; } a:hover { text-decoration: none; }
+legend { color: #000; } fieldset, img { border: 0; } button, input, select, textarea { font-size: 100%; line-height:normal; }
+table{ border-collapse: collapse; border-spacing: 0; }
+input[type="button"],input[type="submit"],input[type="reset"]{cursor:pointer;}
+iframe{ display:block; } .clearfix:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0; } .clearfix { zoom:1; }
+/*正文样式*/
+ * { margin: 0; padding: 0; }
+body { background: url("../images/bg.png"); }
+table { margin: 10px auto; }
+table tr td { width: 110px; height: 110px; }
+.button { width: 150px; height: 40px; background: #481305; display: inline-block; color: #ffffff; text-align: center;  line-height: 40px; text-decoration: none; border-radius: 5px; position: relative; left: 130px; top: 60px; }
+.target { width: 110px; height: 110px; position: absolute; border: 2px solid #ffffff; top: 0; left: 0; }
+#Tz_show { width: 170px; height: 170px; position: absolute; top: 50%; left: 50%; margin-top: -75px; margin-left: -75px; display: none; background-color: #c39862; text-align: center; font-size: 14px; line-height: 35px ;color: #fff;border-radius: 5px;box-shadow: 0 0 4px #ccc}
+#Tz_show .pic { width: 110px; height: 110px; margin: 10px 30px; }
+#Tz_show span{ position: absolute; top: -1px; right: 8px;cursor: pointer}

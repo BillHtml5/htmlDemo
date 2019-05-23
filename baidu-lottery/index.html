@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<!--网页头部-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="jquery抽奖游戏">
+    <meta name="Description" content="一款抽奖系统特效,随机抽取奖品,适用于促销活动界面，使用jQuery制作完成,兼容各大主流浏览器">
+    <title>jquery正方形抽奖游戏</title>
+    <link rel="stylesheet" href="css/demo.css"/>
+
+</head>
+<body>
+<table border="1" cellpadding="0" cellspacing="1">
+    <tr>
+        <td class="zd" style="background:url('images/0.jpg');" data-index="0"></td>
+        <td class="zd" style="background:url('images/1.jpg');" data-index="1"></td>
+        <td class="zd" style="background:url('images/2.jpg');" data-index="2"></td>
+        <td class="zd" style="background:url('images/3.jpg');" data-index="3"></td>
+        <td class="zd" style="background:url('images/4.jpg');" data-index="4"></td>
+        <td class="zd" style="background:url('images/5.jpg');" data-index="5"></td>
+        <td class="zd" style="background:url('images/6.jpg');" data-index="6"></td>
+    </tr>
+    <tr>
+        <td class="zd" style="background:url('images/7.jpg');" data-index="19"></td>
+        <td colspan="5" rowspan="3">
+            <a class="button button1" href="javascript:void(0)">开始抽奖</a>
+            <a class="button button2" href="javascript:void(0)">重&nbsp&nbsp置</a>
+        </td>
+        <td class="zd" style="background:url('images/8.jpg'); " data-index="7"></td>
+    </tr>
+    <tr>
+        <td class="zd" style="background:url('images/9.jpg');" data-index="18"></td>
+        <td class="zd" style="background:url('images/10.jpg');" data-index="8"></td>
+
+    </tr>
+    <tr>
+        <td class="zd" style="background:url('images/11.jpg');"data-index="17"></td>
+        <td class="zd" style="background:url('images/12.jpg');" data-index="9"></td>
+    </tr>
+    <tr>
+        <td class="zd" style="background:url('images/13.jpg');" data-index="16"></td>
+        <td class="zd" style="background:url('images/14.jpg');" data-index="15"></td>
+        <td class="zd" style="background:url('images/15.jpg');" data-index="14"></td>
+        <td class="zd" style="background:url('images/16.jpg');" data-index="13"></td>
+        <td class="zd" style="background:url('images/17.jpg');" data-index="12"></td>
+        <td class="zd" style="background:url('images/18.jpg');" data-index="11"></td>
+        <td class="zd" style="background:url('images/19.jpg');"data-index="10"></td>
+    </tr>
+</table>
+<div class="target">
+</div>
+<div id="Tz_show">恭喜您获得了 <span>X</span>
+    <div class="pic"></div>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+</body>
+</html>

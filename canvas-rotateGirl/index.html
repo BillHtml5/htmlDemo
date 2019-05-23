@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <canvas id="mycanvas" width="300" height="300"></canvas>
+
+
+    <script type="text/javascript">
+
+        var mycanvas = document.getElementById("mycanvas");
+
+        var context = mycanvas.getContext("2d");
+
+        //创建img
+
+        var img = new Image();
+
+        img.src = "NPC1.png";
+
+        //加载
+
+        img.onload = function () {
+
+            var beginx = 0;//裁减图片的X轴坐标。从左往右递增的。
+
+            setInterval(function () {
+
+                context.clearRect(0, 0, mycanvas.width, mycanvas.height);
+
+                //100毫秒裁减一次图片绘制在页面上。
+
+                context.drawImage(img, beginx * 40, beginx * 65, 40, 65, 150, 150, 40, 65);
+
+                beginx++;
+
+                beginx %= 4;
+
+            }, 100);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
